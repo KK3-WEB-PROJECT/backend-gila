@@ -5,14 +5,13 @@ const cors = require('cors');
 
 dotenv.config();
 
-// middleware
+app.use("/uploads", express.static("uploads"));
 app.use(express.json());
 app.use(cors({
   origin: true,
   credentials: true
 }));
 
-// routes
 const userRoutes = require("./routes/userRoutes");
 app.use("/users", userRoutes);
 
@@ -24,6 +23,9 @@ app.use('/piket', piketRoute);
 
 const pasienRoute = require('./routes/pasienRoute');
 app.use('/pasien', pasienRoute);
+
+const absenRoute = require('./routes/absenRoute');
+app.use('/absen', absenRoute);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

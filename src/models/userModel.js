@@ -23,6 +23,10 @@ const User = {
 
     getByEmail: (email, callback) => {
         db.query("SELECT * FROM users WHERE email = ?", [email], callback);
+    },
+
+    getByRole: (role, callback) => {
+        db.query("SELECT * FROM users WHERE role = ?", [role], callback);
     }
 };
 
